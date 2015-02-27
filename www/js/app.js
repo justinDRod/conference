@@ -47,6 +47,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
+
+  .state('app.weather', {
+    url: "/weather",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/weather.html",
+        controller: 'PlaylistsCtrl'
+      }
+    }
+  })
     .state('app.playlists', {
       url: "/playlists",
       views: {
