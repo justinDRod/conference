@@ -1,8 +1,10 @@
 angular.module('currentWeather', [])
 
-.controller('CurrentWeatherCtrl', function($scope, $http) {
+.controller('CurrentWeatherCtrl', function($scope, $http, $ionicLoading) {
 
-  console.log("HIT");
+  $ionicLoading.show({
+    template: 'loading'
+  })
 
 	$scope.getTime = function(seconds){
 		var dayOfWeek = new Date(seconds*1000);
@@ -12,10 +14,12 @@ angular.module('currentWeather', [])
   var setWeatherDetail = function(lat, lon){
     $http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=imperial')
       .success(function(data, status, headers, config) {
+        $ionicLoading.hide();
         $scope.detail = data;
       })
       .error(function(data, status, headers, config) {
         console.log('GET call failed');
+        $ionicLoading.hide();
         $scope.detail = [];
       });
   }  		
