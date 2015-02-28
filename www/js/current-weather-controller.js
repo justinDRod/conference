@@ -10,9 +10,14 @@ angular.module('currentWeather', [])
 	$http.get('http://api.openweathermap.org/data/2.5/weather?q=San-Antonio,us&units=imperial')
 		.success(function(data, status, headers, config) {
 			$scope.detail = data;
-			console.log(data);
   		})
   		.error(function(data, status, headers, config) {
   			$scope.detail = [];
   		});
+  		
+  	navigator.geolocation.getCurrentPosition(
+  							function() {console.log(position.coords.latitude)},
+  							function() {console.log("Something went wrong")
+  								
+  							});
 })
