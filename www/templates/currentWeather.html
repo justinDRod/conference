@@ -1,0 +1,12 @@
+<ion-view view-title="Current Weather">
+  <ion-content>
+
+  	<p style="margin: 10px 10px 10px 10px">{{detail.name + " - " + detail.weather[0].description}}</p>
+  	<p style="margin: 10px 10px 10px 10px">{{"Current Temperature: " + detail.main.temp}}</p>
+  	<p style="margin: 10px 10px 10px 10px">{{"Humidity: " + detail.main.humidity}}</p>
+  	<p style="margin: 10px 10px 10px 10px">{{"Sunrise: " + getTime(detail.sys.sunrise)}}</p>
+  	<p style="margin: 10px 10px 10px 10px">{{"Sunset: " + getTime(detail.sys.sunset)}}</p>
+  			
+  			
+  </ion-content>
+</ion-view>

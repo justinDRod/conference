@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'access',/* 'playlist', 'playlists',*/ 'weather'])
+angular.module('starter', ['ionic', 'access', 'weather', 'currentWeather'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,7 +38,16 @@ angular.module('starter', ['ionic', 'access',/* 'playlist', 'playlists',*/ 'weat
         controller: 'WeatherCtrl'
       }
     }
-  })  
+  }) 
+  .state('app.CurrentWeather', {
+    url: "/currentWeather",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/currentWeather.html",
+        controller: 'CurrentWeatherCtrl'
+      }
+    }
+  }) 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/weather');
 });
