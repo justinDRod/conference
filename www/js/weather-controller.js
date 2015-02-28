@@ -3,7 +3,7 @@ angular.module('weather', [])
 .controller('WeatherCtrl', function($scope, $http, $ionicLoading) {
 
 	$ionicLoading.show({
-		template: 'loading'
+		template: 'Please wait while we fetch weather data for your area!'
 	})
 
 
