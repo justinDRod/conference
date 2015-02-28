@@ -1,7 +1,8 @@
 <ion-view view-title="Weather">
   <ion-content>
+  	<p>{{weather.city.name}}</p>
     <ion-list>
-      <ion-item ng-repeat="weekday in weather" href="#/app/weather">
+      <ion-item ng-repeat="weekday in weather.list" href="#/app/weather">
         {{getDay(weekday.dt) + " - " + weekday.weather[0].description + " - " + weekday.temp.max + "/" + weekday.temp.min}}
       </ion-item>
     </ion-list>

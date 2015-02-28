@@ -7,14 +7,27 @@ angular.module('weather', [])
 		return convertDayToNumber[dayOfWeek.getDay()];
 	}
 
-	//http://api.openweathermap.org/data/2.5/weather?q=San-Antonio,us
-
-	$http.get('http://api.openweathermap.org/data/2.5/forecast/daily?cnt=7&mode=json&q=San-Antonio,us&units=imperial')
+  var setWeatherDetail = function(lat, lon){
+    $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?cnt=7&mode=json&lat=' + lat + '&lon=' + lon + '&units=imperial')
 		.success(function(data, status, headers, config) {
-			$scope.weather = data.list;
-			console.log(data.list);
+			$scope.weather = data;
   		})
   		.error(function(data, status, headers, config) {
   			$scope.weather = [];
   		});
+    }
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+  function onSuccess(position){
+    console.log(position.coords.latitude, position.coords.longitude);
+    setWeatherDetail(position.coords.latitude, position.coords.longitude);
+  }
+
+  function onError(error){
+    console.log('code: ' + error.code + '\n' + 
+                  'message: ' + error.message + '\n');
+    setWeatherDetail(-98.49,29.42);
+  }
+
+
 })
