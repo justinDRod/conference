@@ -1,5 +1,9 @@
 <ion-view view-title="Current Weather">
   <ion-content>
+  <ion-refresher
+  		pulling-text="Fetching data..."
+  		on-refresh="doRefresh()">
+	</ion-refresher>
 
   	<p style="margin: 10px 10px 10px 10px">{{detail.name + " - " + detail.weather[0].description}}</p>
   	<p style="margin: 10px 10px 10px 10px">{{"Current Temperature: " + detail.main.temp}}</p>

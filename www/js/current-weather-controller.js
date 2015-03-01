@@ -6,6 +6,10 @@ angular.module('currentWeather', [])
     template: 'Fetching data...'
   })
 
+  $scope.doRefresh = function(){
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  }
+
 	$scope.getTime = function(seconds){
 		var dayOfWeek = new Date(seconds*1000);
 		return dayOfWeek.toLocaleTimeString();
@@ -21,7 +25,11 @@ angular.module('currentWeather', [])
         console.log('GET call failed');
         $ionicLoading.hide();
         $scope.detail = [];
-      });
+      })
+      .finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+     });
   }  		
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
