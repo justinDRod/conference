@@ -6,6 +6,10 @@ angular.module('weather', [])
 		template: 'Fetching data...'
 	})
 
+  $scope.doRefresh = function(){
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  }
+
 
 	$scope.getDay = function(seconds){
 		var dayOfWeek = new Date(seconds*1000);

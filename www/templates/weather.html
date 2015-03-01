@@ -1,5 +1,9 @@
 <ion-view view-title="Weather">
   <ion-content>
+  	<ion-refresher
+  		pulling-text="Fetching data..."
+  		on-refresh="doRefresh()">
+	</ion-refresher>
   	<p>{{weather.city.name}}</p>
     <ion-list>
       <ion-item ng-repeat="weekday in weather.list" href="#/app/weather">
