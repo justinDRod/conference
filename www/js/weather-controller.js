@@ -26,7 +26,11 @@ angular.module('weather', [])
   		.error(function(data, status, headers, config) {
   			$ionicLoading.hide();
   			$scope.weather = [];
-  		});
+  		})
+      .finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+     });
     }
   navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
