@@ -4,7 +4,7 @@
   		pulling-text="Fetching data..."
   		on-refresh="doRefresh()">
 	</ion-refresher>
-  	<p>{{weather.city.name}}</p>
+  	<p style="margin: 10px 10px 10px 10px">{{weather.city.name}}</p>
     <ion-list>
       <ion-item ng-repeat="weekday in weather.list" href="#/app/weather">
         {{getDay(weekday.dt) + " - " + weekday.weather[0].description + " - " + weekday.temp.max + "/" + weekday.temp.min}}
